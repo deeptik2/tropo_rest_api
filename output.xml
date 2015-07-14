@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20150714 06:54:05.058" generator="Robot 2.8.7 (Python 2.7.6 on darwin)">
+<suite source="/Users/deeptik/PycharmProjects/tropo_rest_api/tests" id="s1" name="Tests">
+<suite source="/Users/deeptik/PycharmProjects/tropo_rest_api/tests/rest_api_test.robot" id="s1-s1" name="Rest Api Test">
+<test id="s1-s1-t1" name="Get Details of The Tropo App">
+<kw type="kw" name="${response_body} = rest_api_keywords.Make Get Tropo App API Call">
+<doc></doc>
+<arguments>
+<arg>${TROPO_GET_APP_URL}</arg>
+<arg>${APP_ID}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:05.569" level="TRACE">Arguments: [ ${resource_url}=u'/v1/applications' | ${app_id}=u'336897' ]</msg>
+<kw type="kw" name="HttpLibrary.HTTP.Create Http Context">
+<doc>Sets the HTTP host to use for future requests. You must call this</doc>
+<arguments>
+<arg>${TROPO_HOST}</arg>
+<arg>${TRANSPORT_PROTOCOL}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:05.569" level="TRACE">Arguments: [ u'api.tropo.com' | u'https' ]</msg>
+<msg timestamp="20150714 06:54:05.569" level="INFO">Host for next HTTP request set to 'api.tropo.com'</msg>
+<msg timestamp="20150714 06:54:05.570" level="INFO">Scheme for next HTTP request set to 'https'</msg>
+<msg timestamp="20150714 06:54:05.570" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:05.570" starttime="20150714 06:54:05.569"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.Set Request Header">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Authorization</arg>
+<arg>${TROPO_BASIC_AUTH}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:05.570" level="TRACE">Arguments: [ u'Authorization' | u'Basic YXBpZ2VlazpzZWNyZXQ=' ]</msg>
+<msg timestamp="20150714 06:54:05.570" level="INFO">Set request header "Authorization" to "Basic YXBpZ2VlazpzZWNyZXQ="</msg>
+<msg timestamp="20150714 06:54:05.570" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:05.570" starttime="20150714 06:54:05.570"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.GET">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${TROPO_GET_APP_URL}/${APP_ID}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:05.571" level="TRACE">Arguments: [ u'/v1/applications/336897' ]</msg>
+<msg timestamp="20150714 06:54:05.571" level="DEBUG">Request headers:</msg>
+<msg timestamp="20150714 06:54:05.571" level="DEBUG">Host: api.tropo.com</msg>
+<msg timestamp="20150714 06:54:05.571" level="DEBUG">Authorization: Basic YXBpZ2VlazpzZWNyZXQ=</msg>
+<msg timestamp="20150714 06:54:05.571" level="DEBUG">No request body set</msg>
+<msg timestamp="20150714 06:54:05.571" level="DEBUG">Performing GET request on https://api.tropo.com/v1/applications/336897</msg>
+<msg timestamp="20150714 06:54:06.728" level="DEBUG">Response status line: 200 OK</msg>
+<msg timestamp="20150714 06:54:06.728" level="DEBUG">Response headers:</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">x-api-version: 1</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">transfer-encoding: chunked</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">strict-transport-security: max-age=31536000; includeSubDomains</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">connection: close</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">x-backend-site: ORL</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">date: Tue, 14 Jul 2015 04:57:48 GMT</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">x-backend-lb: 145</msg>
+<msg timestamp="20150714 06:54:06.729" level="DEBUG">content-type: application/json</msg>
+<msg timestamp="20150714 06:54:06.730" level="DEBUG">x-backend-name: provisioning</msg>
+<msg timestamp="20150714 06:54:06.730" level="DEBUG">Response body:</msg>
+<msg timestamp="20150714 06:54:06.730" level="DEBUG">{
+  "href": "https://api.tropo.com/rest/v1/applications/336897",
+  "id": "336897",
+  "name": "pluto",
+  "platform": "webapi",
+  "voiceUrl": "https://www.tropo.com",
+  "messagingUrl": "https://www.tropo.com",
+  "environment": "https://api.tropo.com/rest/v1/environments/445",
+  "userId": 134876,
+  "user": "https://api.tropo.com/rest/v1/users/134876",
+  "partition": "staging"
+}</msg>
+<msg timestamp="20150714 06:54:06.730" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.730" starttime="20150714 06:54:05.571"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.Response Status Code Should Equal">
+<doc>Fails if the response status code of the previous request was not the</doc>
+<arguments>
+<arg>${HTTP_CODE_200_OK}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.731" level="TRACE">Arguments: [ u'200 OK' ]</msg>
+<msg timestamp="20150714 06:54:06.732" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.731" starttime="20150714 06:54:06.731"></status>
+</kw>
+<kw type="kw" name="${body} = HttpLibrary.HTTP.Get Response Body">
+<doc>Get the response body.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:06.732" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20150714 06:54:06.732" level="TRACE">Return: '{\n  "href": "https://api.tropo.com/rest/v1/applications/336897",\n  "id": "336897",\n  "name": "pluto",\n  "platform": "webapi",\n  "voiceUrl": "https://www.tropo.com",\n  "messagingUrl": "https://www.tropo.com",\n  "environment": "https://api.tropo.com/rest/v1/environments/445",\n  "userId": 134876,\n  "user": "https://api.tropo.com/rest/v1/users/134876",\n  "partition": "staging"\n}'</msg>
+<msg timestamp="20150714 06:54:06.733" level="INFO">${body} = {
+  "href": "https://api.tropo.com/rest/v1/applications/336897",
+  "id": "336897",
+  "name": "pluto",
+  "platform": "webapi",
+  "voiceUrl": "https://www.tropo.com",
+  "messagingUrl": "https://www.trop...</msg>
+<status status="PASS" endtime="20150714 06:54:06.732" starttime="20150714 06:54:06.732"></status>
+</kw>
+<msg timestamp="20150714 06:54:06.733" level="TRACE">Return: '{\n  "href": "https://api.tropo.com/rest/v1/applications/336897",\n  "id": "336897",\n  "name": "pluto",\n  "platform": "webapi",\n  "voiceUrl": "https://www.tropo.com",\n  "messagingUrl": "https://www.tropo.com",\n  "environment": "https://api.tropo.com/rest/v1/environments/445",\n  "userId": 134876,\n  "user": "https://api.tropo.com/rest/v1/users/134876",\n  "partition": "staging"\n}'</msg>
+<msg timestamp="20150714 06:54:06.734" level="INFO">${response_body} = {
+  "href": "https://api.tropo.com/rest/v1/applications/336897",
+  "id": "336897",
+  "name": "pluto",
+  "platform": "webapi",
+  "voiceUrl": "https://www.tropo.com",
+  "messagingUrl": "https://www.trop...</msg>
+<status status="PASS" endtime="20150714 06:54:06.733" starttime="20150714 06:54:05.568"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${response_body}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.734" level="TRACE">Arguments: [ '{\n  "href": "https://api.tropo.com/rest/v1/applications/336897",\n  "id": "336897",\n  "name": "pluto",\n  "platform": "webapi",\n  "voiceUrl": "https://www.tropo.com",\n  "messagingUrl": "https://www.tropo.com",\n  "environment": "https://api.tropo.com/rest/v1/environments/445",\n  "userId": 134876,\n  "user": "https://api.tropo.com/rest/v1/users/134876",\n  "partition": "staging"\n}' ]</msg>
+<msg timestamp="20150714 06:54:06.735" level="INFO">{
+  "href": "https://api.tropo.com/rest/v1/applications/336897",
+  "id": "336897",
+  "name": "pluto",
+  "platform": "webapi",
+  "voiceUrl": "https://www.tropo.com",
+  "messagingUrl": "https://www.tropo.com",
+  "environment": "https://api.tropo.com/rest/v1/environments/445",
+  "userId": 134876,
+  "user": "https://api.tropo.com/rest/v1/users/134876",
+  "partition": "staging"
+}</msg>
+<msg timestamp="20150714 06:54:06.735" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.735" starttime="20150714 06:54:06.734"></status>
+</kw>
+<kw type="kw" name="rest_api_keywords.Verify Json Field And Value">
+<doc></doc>
+<arguments>
+<arg>${response_body}</arg>
+<arg>${APP_NAME}</arg>
+<arg>${APP_NAME_VALUE}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.736" level="TRACE">Arguments: [ ${body}='{\n  "href": "https://api.tropo.com/rest/v1/applications/336897",\n  "id": "336897",\n  "name": "pluto",\n  "platform": "webapi",\n  "voiceUrl": "https://www.tropo.com",\n  "messagingUrl": "https://www.tropo.com",\n  "environment": "https://api.tropo.com/rest/v1/environments/445",\n  "userId": 134876,\n  "user": "https://api.tropo.com/rest/v1/users/134876",\n  "partition": "staging"\n}' | ${field_name}=u'/name' | ${field_value}=u'"pluto"' ]</msg>
+<kw type="kw" name="HttpLibrary.HTTP.Json Value Should Equal">
+<doc>Fails if the value of the target node of the JSON document</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>${field_name}</arg>
+<arg>${field_value}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.737" level="TRACE">Arguments: [ '{\n  "href": "https://api.tropo.com/rest/v1/applications/336897",\n  "id": "336897",\n  "name": "pluto",\n  "platform": "webapi",\n  "voiceUrl": "https://www.tropo.com",\n  "messagingUrl": "https://www.tropo.com",\n  "environment": "https://api.tropo.com/rest/v1/environments/445",\n  "userId": 134876,\n  "user": "https://api.tropo.com/rest/v1/users/134876",\n  "partition": "staging"\n}' | u'/name' | u'"pluto"' ]</msg>
+<msg timestamp="20150714 06:54:06.737" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.737" starttime="20150714 06:54:06.737"></status>
+</kw>
+<msg timestamp="20150714 06:54:06.737" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.737" starttime="20150714 06:54:06.735"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>ATDD</tag>
+</tags>
+<status status="PASS" endtime="20150714 06:54:06.738" critical="yes" starttime="20150714 06:54:05.567"></status>
+</test>
+<test id="s1-s1-t2" name="Scenario: Get Details Of The Tropo App">
+<kw type="kw" name="rest_api_keywords.Given I Have A Resource URL ${TROPO_GET_APP_URL}">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:06.741" level="TRACE">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${GET_APP_URL}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.741" level="TRACE">Arguments: [ u'${GET_APP_URL}' ]</msg>
+<msg timestamp="20150714 06:54:06.741" level="INFO">${GET_APP_URL} = /v1/applications</msg>
+<msg timestamp="20150714 06:54:06.741" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.741" starttime="20150714 06:54:06.741"></status>
+</kw>
+<msg timestamp="20150714 06:54:06.742" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.742" starttime="20150714 06:54:06.740"></status>
+</kw>
+<kw type="kw" name="rest_api_keywords.And I Have Path Param ${APP_ID}">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:06.742" level="TRACE">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${APP_ID}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.743" level="TRACE">Arguments: [ u'${APP_ID}' ]</msg>
+<msg timestamp="20150714 06:54:06.743" level="INFO">${APP_ID} = 336897</msg>
+<msg timestamp="20150714 06:54:06.743" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.743" starttime="20150714 06:54:06.743"></status>
+</kw>
+<msg timestamp="20150714 06:54:06.743" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.743" starttime="20150714 06:54:06.742"></status>
+</kw>
+<kw type="kw" name="rest_api_keywords.When I Make An API Call">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:06.744" level="TRACE">Arguments: [  ]</msg>
+<kw type="kw" name="HttpLibrary.HTTP.Create Http Context">
+<doc>Sets the HTTP host to use for future requests. You must call this</doc>
+<arguments>
+<arg>${TROPO_HOST}</arg>
+<arg>${TRANSPORT_PROTOCOL}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.746" level="TRACE">Arguments: [ u'api.tropo.com' | u'https' ]</msg>
+<msg timestamp="20150714 06:54:06.746" level="INFO">Host for next HTTP request set to 'api.tropo.com'</msg>
+<msg timestamp="20150714 06:54:06.747" level="INFO">Scheme for next HTTP request set to 'https'</msg>
+<msg timestamp="20150714 06:54:06.747" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.747" starttime="20150714 06:54:06.745"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.Set Request Header">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Authorization</arg>
+<arg>${TROPO_BASIC_AUTH}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.748" level="TRACE">Arguments: [ u'Authorization' | u'Basic YXBpZ2VlazpzZWNyZXQ=' ]</msg>
+<msg timestamp="20150714 06:54:06.748" level="INFO">Set request header "Authorization" to "Basic YXBpZ2VlazpzZWNyZXQ="</msg>
+<msg timestamp="20150714 06:54:06.748" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:06.748" starttime="20150714 06:54:06.747"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.GET">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${GET_APP_URL}/${APP_ID}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:06.749" level="TRACE">Arguments: [ u'/v1/applications/336897' ]</msg>
+<msg timestamp="20150714 06:54:06.749" level="DEBUG">Request headers:</msg>
+<msg timestamp="20150714 06:54:06.749" level="DEBUG">Host: api.tropo.com</msg>
+<msg timestamp="20150714 06:54:06.749" level="DEBUG">Authorization: Basic YXBpZ2VlazpzZWNyZXQ=</msg>
+<msg timestamp="20150714 06:54:06.750" level="DEBUG">No request body set</msg>
+<msg timestamp="20150714 06:54:06.750" level="DEBUG">Performing GET request on https://api.tropo.com/v1/applications/336897</msg>
+<msg timestamp="20150714 06:54:07.796" level="DEBUG">Response status line: 200 OK</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">Response headers:</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">x-api-version: 1</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">transfer-encoding: chunked</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">strict-transport-security: max-age=31536000; includeSubDomains</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">connection: close</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">x-backend-site: ORL</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">date: Tue, 14 Jul 2015 04:57:49 GMT</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">x-backend-lb: 146</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">content-type: application/json</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">x-backend-name: provisioning</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">Response body:</msg>
+<msg timestamp="20150714 06:54:07.797" level="DEBUG">{
+  "href": "https://api.tropo.com/rest/v1/applications/336897",
+  "id": "336897",
+  "name": "pluto",
+  "platform": "webapi",
+  "voiceUrl": "https://www.tropo.com",
+  "messagingUrl": "https://www.tropo.com",
+  "environment": "https://api.tropo.com/rest/v1/environments/445",
+  "userId": 134876,
+  "user": "https://api.tropo.com/rest/v1/users/134876",
+  "partition": "staging"
+}</msg>
+<msg timestamp="20150714 06:54:07.797" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.797" starttime="20150714 06:54:06.749"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.Response Status Code Should Equal">
+<doc>Fails if the response status code of the previous request was not the</doc>
+<arguments>
+<arg>${HTTP_CODE_200_OK}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:07.798" level="TRACE">Arguments: [ u'200 OK' ]</msg>
+<msg timestamp="20150714 06:54:07.798" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.798" starttime="20150714 06:54:07.798"></status>
+</kw>
+<kw type="kw" name="${RESP_STATUS_CODE} = HttpLibrary.HTTP.Get Response Status">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:07.799" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20150714 06:54:07.799" level="TRACE">Return: '200 OK'</msg>
+<msg timestamp="20150714 06:54:07.799" level="INFO">${RESP_STATUS_CODE} = 200 OK</msg>
+<status status="PASS" endtime="20150714 06:54:07.799" starttime="20150714 06:54:07.798"></status>
+</kw>
+<kw type="kw" name="${RESP_BODY} = HttpLibrary.HTTP.Get Response Body">
+<doc>Get the response body.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:07.799" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20150714 06:54:07.799" level="TRACE">Return: '{\n  "href": "https://api.tropo.com/rest/v1/applications/336897",\n  "id": "336897",\n  "name": "pluto",\n  "platform": "webapi",\n  "voiceUrl": "https://www.tropo.com",\n  "messagingUrl": "https://www.tropo.com",\n  "environment": "https://api.tropo.com/rest/v1/environments/445",\n  "userId": 134876,\n  "user": "https://api.tropo.com/rest/v1/users/134876",\n  "partition": "staging"\n}'</msg>
+<msg timestamp="20150714 06:54:07.800" level="INFO">${RESP_BODY} = {
+  "href": "https://api.tropo.com/rest/v1/applications/336897",
+  "id": "336897",
+  "name": "pluto",
+  "platform": "webapi",
+  "voiceUrl": "https://www.tropo.com",
+  "messagingUrl": "https://www.trop...</msg>
+<status status="PASS" endtime="20150714 06:54:07.799" starttime="20150714 06:54:07.799"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${RESP_BODY}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:07.800" level="TRACE">Arguments: [ u'${RESP_BODY}' ]</msg>
+<msg timestamp="20150714 06:54:07.800" level="INFO">${RESP_BODY} = {
+  "href": "https://api.tropo.com/rest/v1/applications/336897",
+  "id": "336897",
+  "name": "pluto",
+  "platform": "webapi",
+  "voiceUrl": "https://www.tropo.com",
+  "messagingUrl": "https://www.trop...</msg>
+<msg timestamp="20150714 06:54:07.800" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.800" starttime="20150714 06:54:07.800"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Set Test Variable">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${RESP_STATUS_CODE}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:07.801" level="TRACE">Arguments: [ u'${RESP_STATUS_CODE}' ]</msg>
+<msg timestamp="20150714 06:54:07.801" level="INFO">${RESP_STATUS_CODE} = 200 OK</msg>
+<msg timestamp="20150714 06:54:07.801" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.801" starttime="20150714 06:54:07.800"></status>
+</kw>
+<msg timestamp="20150714 06:54:07.801" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.801" starttime="20150714 06:54:06.744"></status>
+</kw>
+<kw type="kw" name="rest_api_keywords.Then The Status Code Should Be ${HTTP_CODE_200_OK}">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:07.803" level="TRACE">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${http_code}</arg>
+<arg>${RESP_STATUS_CODE}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:07.804" level="TRACE">Arguments: [ u'200 OK' | '200 OK' ]</msg>
+<msg timestamp="20150714 06:54:07.804" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'str'&gt;</msg>
+<msg timestamp="20150714 06:54:07.804" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.804" starttime="20150714 06:54:07.803"></status>
+</kw>
+<msg timestamp="20150714 06:54:07.805" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.805" starttime="20150714 06:54:07.802"></status>
+</kw>
+<kw type="kw" name="rest_api_keywords.And The Response Body ${RESP_BODY} Should Have Field ${APP_NAME} And Its Value ${APP_NAME_VALUE}">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20150714 06:54:07.807" level="TRACE">Arguments: [  ]</msg>
+<kw type="kw" name="HttpLibrary.HTTP.Json Value Should Equal">
+<doc>Fails if the value of the target node of the JSON document</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>${name}</arg>
+<arg>${value}</arg>
+</arguments>
+<msg timestamp="20150714 06:54:07.808" level="TRACE">Arguments: [ '{\n  "href": "https://api.tropo.com/rest/v1/applications/336897",\n  "id": "336897",\n  "name": "pluto",\n  "platform": "webapi",\n  "voiceUrl": "https://www.tropo.com",\n  "messagingUrl": "https://www.tropo.com",\n  "environment": "https://api.tropo.com/rest/v1/environments/445",\n  "userId": 134876,\n  "user": "https://api.tropo.com/rest/v1/users/134876",\n  "partition": "staging"\n}' | u'/name' | u'"pluto"' ]</msg>
+<msg timestamp="20150714 06:54:07.808" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.808" starttime="20150714 06:54:07.807"></status>
+</kw>
+<msg timestamp="20150714 06:54:07.808" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20150714 06:54:07.808" starttime="20150714 06:54:07.806"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>bdd</tag>
+</tags>
+<status status="PASS" endtime="20150714 06:54:07.808" critical="yes" starttime="20150714 06:54:06.739"></status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150714 06:54:07.809" starttime="20150714 06:54:05.143"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20150714 06:54:07.812" starttime="20150714 06:54:05.058"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat info="" links="" doc="" combined="" pass="1" fail="0">ATDD</stat>
+<stat info="" links="" doc="" combined="" pass="1" fail="0">bdd</stat>
+</tag>
+<suite>
+<stat fail="0" pass="2" id="s1" name="Tests">Tests</stat>
+<stat fail="0" pass="2" id="s1-s1" name="Rest Api Test">Tests.Rest Api Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
