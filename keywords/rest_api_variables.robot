@@ -6,7 +6,7 @@ ${TROPO_HOST}    api.tropo.com
 ${TRANSPORT_PROTOCOL}    https
 
 
-${TROPO_BASIC_AUTH}    Basic YXBpZ2VlazpzZWNyZXQ=
+${TROPO_BASIC_AUTH}    Basic somekey
 
 ${TROPO_GET_APP_URL}     /v1/applications
 ${APP_ID}    336897
